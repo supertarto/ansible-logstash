@@ -1,5 +1,5 @@
 ---
-logstash_version: "7.4.1"
+logstash_version: "7.5"
 
 logstash_repo_base: "https://artifacts.elastic.co"
 logstash_apt_key: "{{ logstash_repo_base }}/GPG-KEY-elasticsearch"

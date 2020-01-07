@@ -11,6 +11,7 @@ logstash_version_lock: false
 
 logstash_conf_path: /etc/logstash/conf.d
 logstash_pattern_path: /opt/logstash/patterns
+logstash_pattern_list: []
 logstash_conf_list: []
 
 logstash_beats_use_ssl: false

@@ -1,2 +1,41 @@
 ---
+- name: Set logstash_major_version
+  set_fact: "logstash_major_version={{ logstash_version.split('.')[0] }}.x"
+  when: logstash_major_version is undefined
 
+- include_tasks: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Create custom pattern folder
+  file:
+    path: "{{ logstash_pattern_path }}"
+    state: directory
+    mode: 0775
+
+- name: Add patterns
+  template:
+    src: "{{ logstash_pattern_list }}.j2"
+    dest: "{{ logstash_pattern_path }}/{{ logstash_pattern_list }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart logstash
+
+- name: Configure logstash
+  template:
+    src: "{{ logstash_conf_list }}.j2"
+    dest: "{{ logstash_conf_path }}/{{ logstash_conf_list }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart logstash
+
+- name: Transform logstash key (pkcs8)
+  command: openssl pkcs8 -in "{{ logstash_key_src_path }}" -topk8 -out "{{ logstash_key_dest_path }}" -nocrypt
+  when: logstash_use_pkcs8_key
+
+- name: Ensure logstash is enabled and started
+  service:
+    name: logstash
+    enabled: true
+    state: started

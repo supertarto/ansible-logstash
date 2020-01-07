@@ -1,2 +1,23 @@
 ---
+logstash_version: "7.4.1"
 
+logstash_repo_base: "https://artifacts.elastic.co"
+logstash_apt_key: "{{ logstash_repo_base }}/GPG-KEY-elasticsearch"
+logstash_apt_key_id: "46095ACC8548582C1A2699A9D27D666CD88E42B4"
+logstash_apt_url: "deb {{ logstash_repo_base }}/packages/{{ logstash_major_version }}/apt stable main"
+logstash_package_name: "logstash"
+
+logstash_version_lock: false
+
+logstash_pattern_path: /opt/logstash/patterns
+logstash_conf_list: []
+
+logstash_beats_use_ssl: false
+logstash_beats_ssl_certificate_authorities: []
+logstash_beats_ssl_certificate: []
+logstash_beats_ssl_key: []
+
+logstash_key_src_path: []
+logstash_key_dest_path: []
+
+logstash_use_pkcs8_key: false

@@ -1,0 +1,24 @@
+input {
+    beats {
+    port => 5044
+{% if logstash_beats_use_ssl == true %}       
+    ssl => true
+    ssl_certificate_authorities => ["{{ logstash_beats_ssl_certificate_authorities }}"]
+    ssl_certificate => "{{ logstash_beats_ssl_certificate }}"
+    ssl_key => "{{ logstash_beats_ssl_key }}"
+    ssl_verify_mode => "none"
+{% endif %}
+    }
+}
+filter
+{
+
+}
+output {
+  elasticsearch {
+    hosts => ["localhost:9200"]
+    index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
+    manage_template => false
+    sniffing => true
+    }
+}

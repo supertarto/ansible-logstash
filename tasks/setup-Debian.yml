@@ -1,0 +1,32 @@
+---
+- name: Install pre-requisite (Debian)
+  package:
+    name: [ca-certificates, apt-transport-https, curl]
+    state: present
+
+- name: Add logstash repository key (Debian)
+  apt_key:
+    url: '{{ logstash_apt_key }}'
+    id: '{{ logstash_apt_key_id }}'
+    state: present
+
+- name: Add logstash repository (Debian)
+  apt_repository:
+    repo: '{{ logstash_apt_url }}'
+    state: present
+
+- name: Ensure logstash is installed (Debian)
+  apt:
+    name: '{{ logstash_package_name }}{% if logstash_version is defined %}={{ logstash_version }}{% endif %}'
+    state: present
+    allow_unauthenticated: "{{ 'no' if logstash_apt_key else 'yes' }}"
+    cache_valid_time: 86400
+  register: logstash_debian_install_from_repo
+  notify:
+    - Restart logstash
+
+- name: Hold logstash version (Debian)
+  dpkg_selections:
+    name: "{{ logstash_package_name }}"
+    selection: "hold"
+  when: logstash_version_lock

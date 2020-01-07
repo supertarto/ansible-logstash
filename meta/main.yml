@@ -1,9 +1,8 @@
 ---
 galaxy_info:
   author: "Xavier Binois"
-  description: " "
-  role_name: 
-  company:
+  description: "Install and configure logstash with Ansible"
+  role_name: logstash
   license: "GNU General Public License v3.0"
   min_ansible_version: 2.8
 
@@ -13,6 +12,11 @@ galaxy_info:
         - "stretch"
         - "buster"
 
-  galaxy_tags: []
+  galaxy_tags:
+    - logsatsh
+    - logging
+    - elk
+    - system
+    - monitoring
 
 dependencies: []

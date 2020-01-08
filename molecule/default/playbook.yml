@@ -11,4 +11,5 @@
 
   roles:
     - role: supertarto.openjdk
+    - role: supertarto.elasticsearch
     - role: supertarto.logstash

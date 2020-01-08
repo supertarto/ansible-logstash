@@ -20,7 +20,7 @@
     group: root
     mode: 0644
   notify: Restart logstash
-  when: logstash_pattern_list
+  when: logstash_pattern_list |bool
 
 - name: Configure logstash
   template:
@@ -30,7 +30,7 @@
     group: root
     mode: 0644
   notify: Restart logstash
-  when: logstash_conf_list
+  when: logstash_conf_list |bool
 
 - name: Transform logstash key (pkcs8)
   command: openssl pkcs8 -in "{{ logstash_key_src_path }}" -topk8 -out "{{ logstash_key_dest_path }}" -nocrypt

@@ -30,3 +30,8 @@
     name: "{{ logstash_package_name }}"
     selection: "hold"
   when: logstash_version_lock
+
+- name: Reload systemd
+  systemd:
+    daemon_reload: true
+  when: logstash_debian_install_from_repo |bool and ansible_service_mgr == "systemd"

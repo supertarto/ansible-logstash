@@ -7,7 +7,6 @@ Install and configure Logstash with Ansible. It's meant to be used with elastics
 None, but can be used with Elasticsearch.
 
 ## Tested plateform
-* Debian 9 (Stretch)
 * Debian 10 (Buster)
 
 ## Role variables

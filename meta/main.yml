@@ -12,7 +12,7 @@ galaxy_info:
         - "buster"
 
   galaxy_tags:
-    - logsatsh
+    - logstash
     - logging
     - elk
     - system

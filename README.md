@@ -4,7 +4,7 @@
 Install and configure Logstash with Ansible. It's meant to be used with elasticsearch (supertarto.elasticsearch role on Galaxy). For Debian only, the installation use the elasticsearch repository.
 
 ## Requirements
-None, but can be used with Elasticsearch.
+None, but can be used with Elasticsearch. (supertarto.elasticsearch)
 
 ## Tested plateform
 * Debian 10 (Buster)

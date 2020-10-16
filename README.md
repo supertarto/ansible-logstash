@@ -1,5 +1,5 @@
 # Ansible Logstash
-[![Build Status](https://travis-ci.org/supertarto/ansible-logstash.svg?branch=master)](https://travis-ci.org/supertarto/ansible-logstash)
+[![Build Status](https://travis-ci.com/supertarto/ansible-logstash.svg?branch=master)](https://travis-ci.com/supertarto/ansible-logstash)
 
 Install and configure Logstash with Ansible. It's meant to be used with elasticsearch (supertarto.elasticsearch role on Galaxy). For Debian only, the installation use the elasticsearch repository.
 

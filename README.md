@@ -2,7 +2,7 @@
 [![CI](https://github.com/supertarto/ansible-logstash/workflows/CI/badge.svg?event=push)](https://github.com/supertarto/ansible-logstash/actions?query=workflow%3ACI)
 
 Install and configure Logstash with Ansible. It's meant to be used with elasticsearch (supertarto.elasticsearch role on Galaxy). For Debian only, the installation use the elasticsearch repository.
-TEST
+
 ## Requirements
 None, but can be used with Elasticsearch. (supertarto.elasticsearch)
 
